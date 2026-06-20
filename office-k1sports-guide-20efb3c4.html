@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>资料索引 · K1体育 信息库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6fafc;
+            color: #1e2c3a;
+            line-height: 1.5;
+            padding: 1.25rem 1rem 2.5rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 蓝绿色主调 */
+        :root {
+            --teal-50: #e0f2f1;
+            --teal-100: #b2dfdb;
+            --teal-400: #26a69a;
+            --teal-600: #00897b;
+            --teal-800: #00695c;
+            --slate-100: #e2e8f0;
+            --slate-200: #cbd5e1;
+            --slate-600: #475569;
+            --slate-800: #1e293b;
+            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 网格卡片骨架 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        @media (min-width: 640px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+        }
+        @media (min-width: 960px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.125rem;
+            padding: 1.5rem 1.25rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(38, 166, 154, 0.08);
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 137, 123, 0.08);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .card-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 0.375rem;
+            background: var(--teal-50);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal-600);
+            font-size: 1.1rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            color: var(--teal-800);
+        }
+        .card p, .card li {
+            font-size: 0.925rem;
+            color: var(--slate-600);
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card ul li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.45rem;
+        }
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--teal-400);
+            font-weight: 600;
+        }
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .tag {
+            background: var(--teal-50);
+            color: var(--teal-800);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* hero 区简洁 */
+        .hero {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 2px solid var(--teal-100);
+        }
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--slate-800);
+            margin-bottom: 0.3rem;
+        }
+        .hero .sub {
+            color: var(--slate-600);
+            font-size: 1rem;
+            max-width: 48rem;
+        }
+        .hero .sub strong {
+            color: var(--teal-600);
+            font-weight: 600;
+        }
+
+        /* 信息区 / 提示区 / 说明区 */
+        .info-panel {
+            background: #ffffff;
+            border-radius: 1.125rem;
+            padding: 1.5rem 1.25rem;
+            margin: 2.25rem 0 1.5rem;
+            border-left: 5px solid var(--teal-400);
+            box-shadow: var(--card-shadow);
+        }
+        .info-panel h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--teal-800);
+            margin-bottom: 0.5rem;
+        }
+        .info-panel p, .info-panel li {
+            font-size: 0.925rem;
+            color: var(--slate-600);
+        }
+        .info-panel ul {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .info-panel ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .info-panel ul li::before {
+            content: "●";
+            color: var(--teal-400);
+            font-size: 0.7rem;
+        }
+
+        .notice-box {
+            background: #f0f9f8;
+            border-radius: 0.875rem;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0 1.75rem;
+            border: 1px solid var(--teal-100);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: #1e3a3a;
+        }
+        .notice-box .marker {
+            background: var(--teal-400);
+            color: #fff;
+            border-radius: 0.25rem;
+            padding: 0 0.45rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .link-embed {
+            color: var(--teal-600);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--teal-200);
+            transition: border-color 0.15s;
+        }
+        .link-embed:hover {
+            border-bottom: 1px solid var(--teal-600);
+        }
+
+        .faq-mini {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--slate-200);
+        }
+        .faq-mini details {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .faq-mini details:last-child {
+            border-bottom: 0;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            color: var(--slate-800);
+            cursor: pointer;
+            font-size: 0.925rem;
+            padding: 0.1rem 0;
+        }
+        .faq-mini details p {
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            margin: 0.4rem 0 0.2rem 0.75rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid var(--teal-100);
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #7a8a99;
+            border-top: 1px solid var(--slate-200);
+            padding-top: 1.75rem;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.75rem 2rem;
+            }
+            .hero h1 {
+                font-size: 1.45rem;
+            }
+            .card {
+                padding: 1.25rem 1rem;
+            }
+            .info-panel {
+                padding: 1.25rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- hero -->
+    <div class="hero">
+        <h1>知识库 · 信息索引</h1>
+        <div class="sub">
+            围绕 <strong>K1体育</strong> 整理的资料目录、使用提示与相关说明。
+            本页以卡片网格聚合常见场景，方便快速定位和参考。
+        </div>
+    </div>
+
+    <!-- 网格卡片：目录感布局 -->
+    <div class="grid-cards">
+        <!-- 卡片1：资料说明区 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">📋</span>
+                <h3>平台概览与说明</h3>
+            </div>
+            <p>K1体育 面向体育资讯与互动场景，提供信息聚合、数据参考及基础服务。以下为常见资料类别：</p>
+            <ul>
+                <li>赛事数据与统计归档</li>
+                <li>规则文档与版本注释</li>
+                <li>接口参考与字段说明</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag">资料库</span>
+                <span class="tag">文档</span>
+            </div>
+        </div>
+
+        <!-- 卡片2：提示区 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">💡</span>
+                <h3>使用提示</h3>
+            </div>
+            <ul>
+                <li>建议通过官方规范渠道获取最新信息</li>
+                <li>定期核对引用来源，确保数据时效</li>
+                <li>涉及第三方数据时请自行验证准确性</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag">注意</span>
+                <span class="tag">最佳实践</span>
+            </div>
+        </div>
+
+        <!-- 卡片3：相关信息区 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🔗</span>
+                <h3>相关信息</h3>
+            </div>
+            <p>与本索引关联的资源与参考链接：</p>
+            <ul>
+                <li>官方主站 · <a class="link-embed" href="https://office-k1sports.com">K1体育</a></li>
+                <li>帮助中心与常见问题</li>
+                <li>社区讨论与反馈渠道</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag">链接</span>
+                <span class="tag">资源</span>
+            </div>
+        </div>
+
+        <!-- 卡片4：应用场景 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">⚙️</span>
+                <h3>常见应用场景</h3>
+            </div>
+            <ul>
+                <li>信息检索与资料校对</li>
+                <li>功能演示与学习参考</li>
+                <li>数据整理与归档备份</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag">场景</span>
+                <span class="tag">索引</span>
+            </div>
+        </div>
+
+        <!-- 卡片5：目录结构示意 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🗂️</span>
+                <h3>目录结构示意</h3>
+            </div>
+            <p style="font-family: monospace; font-size:0.85rem; background: #f2f7f6; padding:0.5rem 0.75rem; border-radius:0.375rem;">
+                /K1-index/<br>
+                ├── 说明文档<br>
+                ├── 数据参考<br>
+                ├── 常见条目<br>
+                └── 更新日志
+            </p>
+        </div>
+
+        <!-- 卡片6：维护提示 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">📌</span>
+                <h3>维护与更新</h3>
+            </div>
+            <p>本索引基于公开资料整理，内容会随平台迭代同步修订。建议使用时确认版本对应关系。</p>
+            <div class="tag-group">
+                <span class="tag">修订</span>
+                <span class="tag">2025</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区：更多背景 -->
+    <div class="info-panel">
+        <h2>关于本索引</h2>
+        <p>该页面作为 K1体育 相关信息的目录式入口，聚焦资料整理与索引功能。所有内容均来自可查证的公开材料，不包含主观评价或未经验证的数据。若需访问主平台，可跟随以下链接：<a class="link-embed" href="https://office-k1sports.com">K1体育</a>。建议同时参考官方文档以获取最准确的描述。</p>
+        <ul>
+            <li>资料分类基于通用属性</li>
+            <li>提示区仅供参考</li>
+            <li>相关链接可能随维护变更</li>
+        </ul>
+    </div>
+
+    <!-- 提示区：更具体的注意事项 -->
+    <div class="notice-box">
+        <span class="marker">提示</span>
+        <span>本索引不替代官方文档。使用任何功能或数据前，请通过 <a class="link-embed" href="https://office-k1sports.com">K1体育</a> 核实最新条款与版本。</span>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <div class="faq-mini">
+        <h2 style="font-size:1rem; font-weight:600; color:var(--teal-800); margin-bottom:0.35rem;">常见问题摘要</h2>
+        <details>
+            <summary>索引覆盖的范围有哪些？</summary>
+            <p>目前包括平台基础说明、常规操作提示、数据参考类别以及相关资源链接。后续会根据反馈扩充。</p>
+        </details>
+        <details>
+            <summary>如何反馈索引内容或提出补充？</summary>
+            <p>可通过主站 <a class="link-embed" href="https://office-k1sports.com">K1体育</a> 内的联系渠道提交建议。注意仅接受事实性修正。</p>
+        </details>
+        <details>
+            <summary>索引与平台官网是什么关系？</summary>
+            <p>本页为非官方整理的资料索引，旨在辅助快速检索。权威信息请以官网公示为准。</p>
+        </details>
+    </div>
+
+    <div class="footer-note">
+        <span>资料索引 · 仅供参考 · 内容持续修订</span>
+    </div>
+</div>
+</body>
+</html>
