@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 资料索引与信息库</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: #f5f7fa;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* ── 深色头图 ── */
+    .hero {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 3.5rem 1.5rem 2.8rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #94a3b8;
+      max-width: 560px;
+      margin: 0 auto;
+      border-top: 1px solid #334155;
+      padding-top: 0.8rem;
+    }
+
+    .hero .sub a {
+      color: #7dd3fc;
+      text-decoration: none;
+      border-bottom: 1px dotted #7dd3fc;
+    }
+
+    .hero .sub a:hover {
+      color: #bae6fd;
+      border-bottom: 1px solid #bae6fd;
+    }
+
+    /* ── 浅色正文区（目录感卡片布局） ── */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3.5rem;
+    }
+
+    /* 说明区 / 提示区共用 */
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #64748b;
+      border-left: 3px solid #38bdf8;
+      padding-left: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 卡片式信息区块 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.8rem 0 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.6rem 1.5rem 1.8rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.02);
+      transition: box-shadow 0.2s;
+      border: 1px solid #edf2f7;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04), 0 8px 24px rgba(15,23,42,0.02);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #334155;
+      margin-bottom: 0.3rem;
+    }
+
+    .card .meta {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 0.5rem;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 0.5rem;
+    }
+
+    .card .meta strong {
+      font-weight: 500;
+      color: #1e293b;
+    }
+
+    .card a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px dotted #b1cafb;
+    }
+
+    .card a:hover {
+      color: #1e40af;
+      border-bottom: 1px solid #2563eb;
+    }
+
+    /* 相关提示区（FAQ摘要风格） */
+    .tip-area {
+      background: #f9fafc;
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      margin: 2rem 0 2.8rem;
+      border: 1px solid #e9edf2;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 1.2rem;
+    }
+
+    .tip-area .tag {
+      font-size: 0.7rem;
+      background: #e2e8f0;
+      color: #1e293b;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .tip-area p {
+      flex: 1 1 100%;
+      margin: 0.2rem 0 0;
+      font-size: 0.95rem;
+      color: #1e293b;
+    }
+
+    .tip-area a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px dotted #a5c0f5;
+    }
+
+    .tip-area a:hover {
+      border-bottom: 1px solid #2563eb;
+    }
+
+    /* 相关信息区（FAQ 摘要 + 链接线索） */
+    .related {
+      border-top: 1px solid #dfe6ef;
+      padding-top: 1.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .related-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+    }
+
+    .related-items span {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 40px;
+      padding: 0.2rem 1rem 0.25rem;
+      font-size: 0.85rem;
+      color: #1e293b;
+    }
+
+    .related-items a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px dotted #b1cafb;
+    }
+
+    .related-items a:hover {
+      color: #1e40af;
+    }
+
+    /* 页脚 */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin: 2rem 0 1.2rem;
+    }
+
+    footer a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    /* 响应式 */
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 2.2rem 1rem 1.8rem; }
+      .info-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .container { padding: 1.5rem 1rem 2.5rem; }
+      .tip-area { padding: 1.2rem 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero .sub { font-size: 0.9rem; }
+      .card h3 { font-size: 1rem; }
+      .related-items { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>爱游戏 · 知识库</h1>
+    <div class="sub">
+      资料整理 · 信息索引 · 条目汇聚<br>
+      <a href="https://zhweb--ayx.com">爱游戏</a> 作为核心词条，关联多个数据层与主题域
+    </div>
+  </header>
+
+  <!-- 目录感正文区 -->
+  <main class="container">
+
+    <!-- 说明区：索引结构与资料范围 -->
+    <div>
+      <span class="section-label">说明区</span>
+      <p style="margin-bottom: 0.3rem; font-size: 0.95rem;">
+        本页面向资料整理场景，将“<a href="https://zhweb--ayx.com">爱游戏</a>”作为信息锚点，围绕其建立分层条目与关联线索。
+        每个卡片对应一个独立的信息目录，涵盖定义、关联项、引用摘要等维度。
+      </p>
+      <p style="font-size: 0.85rem; color: #475569;">
+        索引范围包括但不限于：词条释义、衍生主题、常见问题、外部资源等。
+      </p>
+    </div>
+
+    <!-- 卡片网格（目录感布局） -->
+    <div class="info-grid">
+      <div class="card">
+        <h3>▸ 词条 · 爱游戏</h3>
+        <p>“爱游戏”作为通用表达，在检索系统中对应多元含义。当前索引指向 <a href="https://zhweb--ayx.com">爱游戏</a> 主站点，该地址提供进一步分类与内容聚合。</p>
+        <div class="meta"><strong>关联标签</strong> 游戏 · 平台 · 索引</div>
+      </div>
+
+      <div class="card">
+        <h3>▸ 资料类别</h3>
+        <p>按内容类型拆分：游戏资料、版本记录、社区讨论索引。每个类别下存在细分节点，便于快速定位。</p>
+        <div class="meta"><strong>子目录</strong> 6 组 · 持续更新</div>
+      </div>
+
+      <div class="card">
+        <h3>▸ 引用与链接</h3>
+        <p>外部参考源包括行业观察、条目数据库及用户贡献摘要。<a href="https://zhweb--ayx.com">爱游戏</a> 页面本身作为一级入口，汇聚多方信息。</p>
+        <div class="meta"><strong>引用数</strong> 12+ 篇</div>
+      </div>
+
+      <div class="card">
+        <h3>▸ 结构说明</h3>
+        <p>采用层级卡片与标签系统。每条记录包含标题、摘要、元数据及关联链接。推荐从主索引 <a href="https://zhweb--ayx.com">爱游戏</a> 开始浏览。</p>
+        <div class="meta"><strong>层级</strong> 一级目录 → 二级卡片</div>
+      </div>
+    </div>
+
+    <!-- 提示区（FAQ摘要风格） -->
+    <div class="tip-area">
+      <span class="tag">提示</span>
+      <span class="tag">FAQ</span>
+      <p>
+        <strong>常见问题摘要：</strong> 如何高效检索“爱游戏”相关资料？建议优先参考主站点 <a href="https://zhweb--ayx.com">爱游戏</a> 的分类索引。部分条目附带版本说明及来源链接，使用前请留意更新时间。
+      </p>
+    </div>
+
+    <!-- 相关信息区（FAQ 摘要 + 关联标签） -->
+    <div class="related">
+      <span class="section-label">相关信息</span>
+      <div class="related-items">
+        <span>📁 内容领域 · 游戏信息</span>
+        <span>🔗 关联词 · <a href="https://zhweb--ayx.com">爱游戏</a></span>
+        <span>📄 更新记录 · 2025-04</span>
+        <span>🏷️ 标签 · 平台 / 资料 / 索引</span>
+        <span>📎 外部参考 · 行业笔记</span>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #475569;">
+        以上条目为 <a href="https://zhweb--ayx.com">爱游戏</a> 知识库的部分快照。更多内容可通过主索引进一步展开。
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>资料索引 · 基于公开信息整理</span> &nbsp;|&nbsp; <a href="https://zhweb--ayx.com">爱游戏</a>
+  </footer>
+
+</body>
+</html>
