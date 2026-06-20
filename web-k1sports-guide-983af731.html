@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 · K1体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fae3c6 0%, #f8d5b0 40%, #f5c9a0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.6;
+            color: #2e241e;
+        }
+        .card {
+            max-width: 860px;
+            width: 100%;
+            background: #fffcf8;
+            border-radius: 40px;
+            padding: 2.8rem 2.2rem;
+            box-shadow: 0 20px 40px -10px rgba(120, 70, 40, 0.25), 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+        @media (max-width: 600px) {
+            body { padding: 1.2rem; }
+            .card { padding: 1.8rem 1.4rem; border-radius: 28px; }
+        }
+        .tagline {
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            color: #b2835e;
+            background: #f7ede4;
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #3d2c22;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+        }
+        .lead {
+            font-size: 1.1rem;
+            background: #fcf5ed;
+            padding: 1.2rem 1.5rem;
+            border-radius: 24px;
+            margin: 1.6rem 0 2rem 0;
+            border-left: 4px solid #dbb594;
+            color: #3a2b22;
+        }
+        .lead a {
+            color: #8b5e3c;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1.5px solid #dbb594;
+            transition: 0.15s;
+        }
+        .lead a:hover {
+            background: #f0dbca;
+            border-bottom-color: #8b5e3c;
+        }
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin: 2rem 0 1rem 0;
+            color: #4d372c;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #dbb594;
+            border-radius: 50%;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.5rem;
+            margin: 0.5rem 0 1.2rem 0;
+        }
+        @media (max-width: 600px) {
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+        .feature-item {
+            background: #fcf8f3;
+            padding: 0.9rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 450;
+            color: #3b2c22;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #f2e4d8;
+            transition: 0.15s;
+        }
+        .feature-item:hover {
+            background: #f7ede4;
+            border-color: #dbb594;
+        }
+        .feature-item strong {
+            color: #7a553b;
+            font-weight: 600;
+        }
+        .info-box {
+            background: #f4eadf;
+            border-radius: 28px;
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0 1.8rem 0;
+            border: 1px solid #e9d7c8;
+        }
+        .info-box p {
+            margin-bottom: 0.75rem;
+        }
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        .faq-item {
+            margin: 0.8rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #e6d5c4;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: #4d372c;
+        }
+        .faq-a {
+            color: #4f3d32;
+            margin-top: 0.2rem;
+        }
+        .footer-note {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #ebddcf;
+            font-size: 0.95rem;
+            color: #6b5547;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-note a {
+            color: #7a553b;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            background: #f4e7db;
+            transition: 0.15s;
+            display: inline-block;
+        }
+        .footer-note a:hover {
+            background: #e7d2bf;
+            color: #3d2c22;
+        }
+        .muted {
+            opacity: 0.7;
+        }
+        .emoji-icon {
+            display: inline-block;
+            margin-right: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="tagline">📋 简明指南 · 一次理清</div>
+        <h1>关于 K1体育，<br>你只需知道这些</h1>
+
+        <div class="lead">
+            <p>如果你正在寻找一个信息清晰、使用流畅的体育内容平台，那么 <a href="https://web-k1sports.com">K1体育</a> 是一个值得了解的选项。无论你是初次接触，还是想快速重温关键细节，下面这份整理都能帮你节省时间。</p>
+        </div>
+
+        <div class="section-title">平台特点速览</div>
+        <div class="feature-grid">
+            <div class="feature-item"><strong>内容覆盖</strong> · 主流赛事与运动项目，信息更新稳定</div>
+            <div class="feature-item"><strong>界面设计</strong> · 结构清晰，减少冗余干扰，浏览效率较高</div>
+            <div class="feature-item"><strong>访问方式</strong> · 无需复杂配置，打开浏览器即可使用</div>
+            <div class="feature-item"><strong>日常使用</strong> · 适合快速查阅比分、赛程和基础资讯</div>
+        </div>
+
+        <div class="info-box">
+            <p><span class="emoji-icon">📌</span> <strong>访问提醒</strong> —— 建议使用稳定网络环境，部分区域可能受当地网络限制影响加载速度。如遇页面加载缓慢，可尝试刷新或更换时段访问。</p>
+            <p><span class="emoji-icon">🔒</span> <strong>安全提示</strong> —— 始终通过官方地址 <a href="https://web-k1sports.com">K1体育</a> 访问，避免使用来源不明的镜像或第三方入口。注意核对网址，防止仿冒站点。</p>
+        </div>
+
+        <div class="section-title">常见疑问摘要</div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 是否需要注册才能浏览内容？</div>
+            <div class="faq-a">平台大部分基础信息可直接查看，部分互动功能可能需要注册账号，具体以页面实际提示为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 移动设备上体验如何？</div>
+            <div class="faq-a">页面经过响应式设计，在手机和平板上均可正常使用，布局会根据屏幕自动调整。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 遇到内容无法显示怎么办？</div>
+            <div class="faq-a">先检查网络连接是否正常，或尝试切换网络环境。如果问题持续，可能是临时维护或区域限制，建议稍后再试。</div>
+        </div>
+
+        <div class="footer-note">
+            <span>保持简单，保持清晰</span>
+            <a href="https://web-k1sports.com">K1体育</a>
+        </div>
+    </div>
+</body>
+</html>
